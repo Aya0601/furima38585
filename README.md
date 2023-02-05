@@ -23,44 +23,44 @@ Things you may want to cover:
 
 * ...
 
-## users名
+## usersテーブル
 
 |Column               |Type    |Options                    |
 |---------------------|--------|---------------------------|
-| name                | string | null: false               |
+| first_name          | string | null: false               |
+| last_name           | string | null: false               |
+| first_name_kana     | string | null: false               |
+| last_name_kana      | string | null: false               |
 | nickname            | string | null: false               |
 | email               | string | null: false, unique: true |
 | encrypted_password  | string | null: false               |
-| birth               | text   | null: false               |
+| birth               | date   | null: false               |
 
 
 
 ### Association
 - has_many :items
 - has_many :buyers
-- has_many :send_address
 
-|## items テーブル
+## items テーブル
 
-| Column    | Type       | Options                        |
-| ----------| ---------- | ------------------------------ |
-| image     | references | null: false                    |
-| item_name | text       | null: false                    |
-| direction | text       | null: false                    |
-| category  | text       | null: false                    |
-| condition | text       | null: false                    |
-| postage   | string     | null: false                    |
-| origin    | text       | null: false                    |
-| days      | integer    | null: false                    |
-| price     | integer    | null: false                    |
-| user      | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| -------------| ---------- | ------------------------------ |
+| item_name    | string     | null: false                    |
+| direction    | text       | null: false                    |
+| category_id  | integer    | null: false                    |
+| condition_id | integer    | null: false                    |
+| postage_id   | integer    | null: false                    |
+| origin_id    | integer    | null: false                    |
+| days_id      | integer    | null: false                    |
+| price        | integer    | null: false                    |
+| user         | references | null: false, foreign_key: true |
 
 
 ### Association
 
 - belongs_to :user
 - has_one :buyer
-- has_one :send_address
 
 ## buyers テーブル
 
@@ -73,24 +73,22 @@ Things you may want to cover:
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :send_address
+- has_one :send_address
 
 ## send_address テーブル
 
-| Column         | Type       | Options                        |
-| ---------------| ---------- | ------------------------------ |
-| user           | references | null: false, foreign_key: true |
-| item           | references | null: false, foreign_key: true |
-| post_code      | text       | null: false                    |
-| area           | text       | null: false                    |
-| city           | text       | null: false                    |
-| address_number | text       | null: false                    |
-| house_name     | text       |                                |
-| telephone      | text       | null: false                    |
+| Column         | Type       | Options     |
+| ---------------| ---------- | ----------- |
+| user           | references | null: false |
+| item           | references | null: false |
+| post_code      | string     | null: false |
+| area           | integer    | null: false |
+| city           | string     | null: false |
+| address_number | string     | null: false |
+| house_name     | string     |             |
+| telephone      | string     | null: false |
 
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
 - belongs_to :buyer
