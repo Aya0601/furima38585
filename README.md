@@ -51,8 +51,8 @@ Things you may want to cover:
 | category_id  | integer    | null: false                    |
 | condition_id | integer    | null: false                    |
 | postage_id   | integer    | null: false                    |
-| origin_id    | integer    | null: false                    |
-| days_id      | integer    | null: false                    |
+| area_id      | integer    | null: false                    |
+| long_id      | integer    | null: false                    |
 | price        | integer    | null: false                    |
 | user         | references | null: false, foreign_key: true |
 
@@ -75,18 +75,16 @@ Things you may want to cover:
 - belongs_to :item
 - has_one :send_address
 
-## send_address テーブル
+## send_addresses テーブル
 
-| Column         | Type       | Options     |
-| ---------------| ---------- | ----------- |
-| user           | references | null: false |
-| item           | references | null: false |
-| post_code      | string     | null: false |
-| area           | integer    | null: false |
-| city           | string     | null: false |
-| address_number | string     | null: false |
-| house_name     | string     |             |
-| telephone      | string     | null: false |
+| Column         | Type       | Options                        |
+| ---------------| ---------- | ------------------------------ |
+| post_code      | string     | null: false                    |
+| area           | integer    | null: false                    |
+| city           | string     | null: false                    |
+| address_number | string     | null: false, foreign_key: true |
+| house_name     | string     | foreign_key: true              |
+| telephone      | string     | null: false, foreign_key: true |
 
 
 ### Association
