@@ -67,7 +67,7 @@ Things you may want to cover:
 | Column      | Type       | Options                        |
 | ------------| ---------- | ------------------------------ |
 | user        | references | null: false, foreign_key: true |
-| item_name   | references | null: false, foreign_key: true |
+| item　　　   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -85,7 +85,7 @@ Things you may want to cover:
 | address_number | string     | null: false       |
 | house_name     | string     |                   |
 | telephone      | string     | null: false       |
-| buyer_id       | references | foreign_key: true |
+| buyer          | references | foreign_key: true |
 
 ### Association
 
