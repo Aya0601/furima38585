@@ -4,7 +4,6 @@ class Item < ApplicationRecord
   # テーブルとのアソシエーション
   belongs_to :user
 
-  validates :user, presence:true
   validates :image, presence:true
   validates :item_name, presence: true
   validates :direction, presence: true
@@ -16,8 +15,9 @@ class Item < ApplicationRecord
     validates :long_id
   end
   
-  validates :price,presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },format: { with: /\A[0-9]+\z/ }
-  validates :user,presence: true
+  validates :price,presence: true
+  validates :price, numericality: {only_integer: true, message: 'Half-width number'}
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range"}
  
   belongs_to :category
   belongs_to :condition
