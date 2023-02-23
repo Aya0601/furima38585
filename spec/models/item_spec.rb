@@ -48,9 +48,9 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Area must be other than 1")
       end
       it 'long_idが1以外でないと出品できない' do
-        @item.long_id = ''
+        @item.long_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Long can't be blank")
+        expect(@item.errors.full_messages).to include("Long must be other than 1")
       end
       it 'priceが空だと出品できない' do
         @item.price = ''
