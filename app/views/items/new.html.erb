@@ -1,3 +1,5 @@
+
+
 <div class="items-sell-contents">
   <header class="items-sell-header">
     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
@@ -5,13 +7,10 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with local: true do |f| %>
-
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    <%= form_with model: @item, local: true do |f| %>
+    <%# インスタンスを渡して、エラー発生時にメッセージを表示 %>
     <%= render 'shared/error_messages', model: f.object %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-
-    <%# 商品画像 %>
+    <%# 出品画像 %>
     <div class="img-upload">
       <div class="weight-bold-text">
         商品画像
@@ -41,7 +40,6 @@
       </div>
     </div>
     <%# /商品名と商品説明 %>
-
     <%# 商品の詳細 %>
     <div class="items-detail">
       <div class="weight-bold-text">商品の詳細</div>
@@ -59,7 +57,6 @@
       </div>
     </div>
     <%# /商品の詳細 %>
-
     <%# 配送について %>
     <div class="items-detail">
       <div class="weight-bold-text question-text">
@@ -71,7 +68,7 @@
           配送料の負担
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:postage_id, Postage.all :id, :postage, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
+        <%= f.collection_select(:postage_id, Postage.all, :id, :postage, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
         <div class="weight-bold-text">
           発送元の地域
           <span class="indispensable">必須</span>
@@ -81,11 +78,10 @@
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:long_id, long.all, :id, :long, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
+        <%= f.collection_select(:long_id, Long.all, :id, :long, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
       </div>
     </div>
     <%# /配送について %>
-
     <%# 販売価格 %>
     <div class="sell-price">
       <div class="weight-bold-text question-text">
@@ -99,7 +95,7 @@
             <span class="indispensable">必須</span>
           </div>
           <span class="sell-yen">¥</span>
-          <%= f.text_field :hoge, class:"price-input", id:"item-price", placeholder:"例）300" %>
+          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
         </div>
         <div class="price-content">
           <span>販売手数料 (10%)</span>
@@ -111,12 +107,11 @@
           <span>販売利益</span>
           <span>
             <span id='profit'></span>円
-          </span>
         </div>
+        </span>
       </div>
     </div>
     <%# /販売価格 %>
-
     <%# 注意書き %>
     <div class="caution">
       <p class="sentence">
