@@ -1,14 +1,13 @@
 class ItemsController < ApplicationController
+  # ログインしていないユーザーはログインページに促す
   before_action :authenticate_user!, except: [:index]#, :show]
   
   def index
-    #@item = Item.includes(:user).order('created_at DESC')
+    @items = Item.all
   end
 
-  def new
-    @item = Item.new
-  end
   
+
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -24,4 +23,5 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:image, :item_name,:direction,:category_id,:condition_id,:postage_id,:area_id,:long_id,:price).merge(user_id: current_user.id)
   end
 
+  
 end
