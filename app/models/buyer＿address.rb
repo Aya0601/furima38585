@@ -12,7 +12,8 @@ class BuyerAddress
     validates :city
     validates :address_number
     validates :telephone, format: { with: /\A[0-9]{11}\z/ }
-
+    # トークンのバリデーション
+    validates :token
   end
 
   def save
