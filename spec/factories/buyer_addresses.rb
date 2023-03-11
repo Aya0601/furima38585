@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :send_address do
-    buyer_id { "1" }
+  factory :buyer_address do
+    user_id { "1" }
     item_id { "1" }
     post_code { "111-1111" }
     area_id { "1" }
@@ -8,6 +8,6 @@ FactoryBot.define do
     address_number { "1-1" }
     house_name { "ああ" }
     telephone { "00000000000" }
-    token { "tok_abcdefghijk00000000000000000" }
+    token { "test111111111111111" }
   end
 end

@@ -11,11 +11,11 @@ RSpec.describe SendAddress, type: :model do
         expect(@send_address).to be_valid
       end
       it 'user_idが空でなければ保存できる' do
-        @send_address.user_id = 1
+        @send_address.buyer_id = 1
         expect(@send_address).to be_valid
       end
       it 'item_idが空でなければ保存できる' do
-        @send_address.item_id = 1
+        @send_address.buyer_id = 1
         expect(@send_address).to be_valid
       end
       it '郵便番号が「3桁＋ハイフン＋4桁」の組み合わせであれば保存できる' do
