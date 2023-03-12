@@ -10,7 +10,7 @@ class BuyersController < ApplicationController
     @buyer_address = BuyerAddress.new(buyer_params)
     if @buyer_address.valid?
       pay_item
-      @order.save
+      @buyer_address.save
       return redirect_to root_path
     else
       render :index
@@ -27,9 +27,9 @@ class BuyersController < ApplicationController
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
-      amount: @item.price,        # 商品の値段
-      card: buyer_params[:token], # カードトークン
-      currency: 'jpy'             # 通貨の種類（日本円）
+      amount: @item.price,        
+      card: buyer_params[:token], 
+      currency: 'jpy'             
     )
   end
 
