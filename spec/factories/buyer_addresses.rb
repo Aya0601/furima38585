@@ -8,6 +8,6 @@ FactoryBot.define do
     address_number { "1-1" }
     house_name { "ああ" }
     telephone { "00000000000" }
-    token { "test111111111111111" }
+    token { "test111111111111" }
   end
 end

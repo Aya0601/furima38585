@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe SendAddress, type: :model do
   before do
+    user = FactoryBot.create(:user)
+    item = TactoryBot.create(:item)
     @send_address = FactoryBot.build(:send_address)
   end
 
