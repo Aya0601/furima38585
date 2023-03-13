@@ -3,6 +3,7 @@ class Item < ApplicationRecord
 
   # テーブルとのアソシエーション
   belongs_to :user
+  has_one :buyer
 
   validates :image, presence:true
   validates :item_name, presence: true
