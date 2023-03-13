@@ -20,7 +20,6 @@ class BuyersController < ApplicationController
   private
 
   def buyer_params
-    # この時点では、buyer_idが不要。またrequire外の情報は参照するため、mergeとする。
     params.require(:buyer_address).permit(:post_code, :area_id, :city, :address_number, :house_name, :telephone).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
@@ -34,7 +33,6 @@ class BuyersController < ApplicationController
   end
 
   def non_purchased_item
-    # itemがあっての、order_form（入れ子構造）。他のコントローラーで生成されたitemを使うにはcreateアクションに定義する。
     @item = Item.find(params[:item_id])
     redirect_to root_path if current_user.id == @item.user_id || @item.buyer.present?
   end
