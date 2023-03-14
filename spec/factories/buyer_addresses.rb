@@ -7,8 +7,5 @@ FactoryBot.define do
     house_name { "ああ" }
     telephone { "00000000000" }
     token { "test111111111111" }
-
-    association :user_id
-    association :item_id
   end
 end
