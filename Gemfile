@@ -87,3 +87,5 @@ group :production do
 end
 
 gem 'mimemagic'
+
+gem 'mail', '2.7.1'
